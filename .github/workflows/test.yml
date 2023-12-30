@@ -1,5 +1,25 @@
-sdfds
+# YAML -> YAML is not a markup language, it is a data serialization language.
+keyname: value
+service: my-project
+test: script1
+test2: script2
 
-sdfds
+parentKey:
+  childKey: value
+  childKey2: value2
 
-dsfsdsd
+array: [value1, value2, value3]
+# an array with each element written separately , it can be an object with key:value pairs , or anything else
+arrayOfObjects:
+  - key1: value1
+    key2: value2
+  - key1: value1
+    key2: value2
+  - key1: value1
+    key2: value2
+
+#multi line string in yaml 
+multiLineString: |
+  This is a multi line string
+  This is the second line
+  This is the third line
