@@ -6,4 +6,7 @@ jobs: # the jobs don't run in sequence , the steps do (-)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: tree
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '20.9.0'
+      - run: node -v
