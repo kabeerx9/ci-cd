@@ -4,6 +4,8 @@ on: [push]
 jobs: # the jobs don't run in sequence , the steps do (-)
   build-app:
     runs-on: ubuntu-latest
+    outputs:
+      text: ${{ steps.setup-finish.outputs.text }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -14,13 +16,14 @@ jobs: # the jobs don't run in sequence , the steps do (-)
       - name: Build the project
         run: npm run build
       - name: Setup Finish
-        run: echo "Setup Finish"
+        id: setup-finish
+        run: echo "::set-output name=text::hello-world-from-build-job"
         # if we want 2nd job and pass data from 1st job to 2nd job
   test-app:
     runs-on: ubuntu-latest
     needs: build-app
+    env:
+      MY_JOB_OUTPUT: ${{ needs.build-app.outputs.text }}
     steps:
-      - name: Test the project
-        run: npm run test
-      - name: Test Finish
-        run: echo "Test Finish"
+      - name: Get the output from the first job
+        run: echo $MY_JOB_OUTPUT
