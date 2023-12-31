@@ -1,25 +1,9 @@
-# YAML -> YAML is not a markup language, it is a data serialization language.
-keyname: value
-service: my-project
-test: script1
-test2: script2
-
-parentKey:
-  childKey: value
-  childKey2: value2
-
-array: [value1, value2, value3]
-# an array with each element written separately , it can be an object with key:value pairs , or anything else
-arrayOfObjects:
-  - key1: value1
-    key2: value2
-  - key1: value1
-    key2: value2
-  - key1: value1
-    key2: value2
-
-#multi line string in yaml 
-multiLineString: |
-  This is a multi line string
-  This is the second line
-  This is the third line
+# trunk-ignore-all(checkov/CKV2_GHA_1)
+name: My First GitHub Action
+on: [push]
+jobs: # the jobs don't run in sequence , the steps do (-)
+  print-hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello Worldddd....."
+      - run: echo "This is step number 2"
