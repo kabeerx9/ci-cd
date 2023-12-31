@@ -2,8 +2,8 @@
 name: My First GitHub Action
 on: [push]
 jobs: # the jobs don't run in sequence , the steps do (-)
-  print-hello-world:
+  build-app:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello Worldddd....."
-      - run: echo "This is step number 2"
+      - uses: actions/checkout@v2
+      - run: tree
