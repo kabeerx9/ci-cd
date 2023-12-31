@@ -15,3 +15,12 @@ jobs: # the jobs don't run in sequence , the steps do (-)
         run: npm run build
       - name: Setup Finish
         run: echo "Setup Finish"
+        # if we want 2nd job and pass data from 1st job to 2nd job
+  test-app:
+    runs-on: ubuntu-latest
+    needs: build-app
+    steps:
+      - name: Test the project
+        run: npm run test
+      - name: Test Finish
+        run: echo "Test Finish"
