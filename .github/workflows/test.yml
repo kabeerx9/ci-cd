@@ -9,4 +9,7 @@ jobs: # the jobs don't run in sequence , the steps do (-)
       - uses: actions/setup-node@v2
         with:
           node-version: '20.9.0'
-      - run: node -v
+      - name: Build the project
+        run: npm run build
+      - name: Setup Finish
+        run: echo "Setup Finish"
